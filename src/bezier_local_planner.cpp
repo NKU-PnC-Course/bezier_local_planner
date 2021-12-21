@@ -14,6 +14,10 @@ BezierLocalPlanner::BezierLocalPlanner(base_local_planner::CostmapModel* costmap
   , cfg_(&cfg)
 {
   initializeCandidateTargets();
+
+  feasible_candidate_paths_pub_ = nh.advertise<nav_msgs::Path>("feasible_candidate_paths", 1);
+  all_candidate_paths_pub_ = nh.advertise<nav_msgs::Path>("all_candidate_paths", 1);
+  tracked_path_pub_ = nh.advertise<nav_msgs::Path>("tracked_path", 1);
 }
 
 BezierLocalPlanner::~BezierLocalPlanner()

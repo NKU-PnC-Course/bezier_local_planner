@@ -50,6 +50,8 @@ private:
   double circumscribed_radius_;                       //!< The radius of the circumscribed circle of the robot
 
   std::vector<Pose2D> candidate_targets_;
+
+  ros::Publisher all_candidate_paths_pub_, feasible_candidate_paths_pub_, tracked_path_pub_;
 };
 
 }  // namespace bezier_local_planner

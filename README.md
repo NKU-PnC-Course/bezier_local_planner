@@ -31,6 +31,7 @@ $ git clone https://github.com/NKU-MobFly-Robotics/bezier_local_planner.git
 $ cd ~/catkin_ws/
 $ catkin_make -DCMAKE_BUILD_TYPE=Release
 ```
+P.S. 在BezierLocalPlanner类里面，我们已经帮大家定义了一些路径publisher和相应的publish函数，为了后续的可视化，需要您在代码实现的时候调用相应的函数发布路径话题
 
 ## 2. 使用benchmark
 本次作业我们采用的机器人仿真模型依旧是Pioneer 3-DX，在上一次DWA的作业中我们已经安装过，这里就不再赘述。下面请先下载benchmark源码到本地并编译
@@ -55,6 +56,14 @@ $ catkin_make -DCMAKE_BUILD_TYPE=Release
 ```
 <param name="base_local_planner" value="dwa_planner/DWAPlannerROS" />
 <rosparam file="$(find dwa_planner)/params/dwa_planner_params.yaml" command="load" />
+```
+接着找到
+```
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find move_base_benchmark)/launch/rviz_navigation.rviz"/>
+```
+将其替换为
+```
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find bezier_local_planner)/params/rviz.rviz"/>
 ```
 
 P.S. 修改launch文件以及相关的yaml配置文件后无需编译，运行程序时直接在外部进行参数传递
