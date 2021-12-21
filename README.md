@@ -50,7 +50,7 @@ $ catkin_make -DCMAKE_BUILD_TYPE=Release
 <param name="base_local_planner" value="dwa_planner/DWAPlannerROS" />
 ```
 
-<font color="#dd0000">修改launch文件以及相关的yaml配置文件后无需编译，运行程序时直接在外部进行参数传递</font><br />
+P.S. 修改launch文件以及相关的yaml配置文件后无需编译，运行程序时直接在外部进行参数传递
 
 接下来打开一个新的终端，运行仿真
 ```
@@ -81,7 +81,10 @@ $ roslaunch move_base_benchmark simple_navigation_goals.launch
 我们用机器人完成给定导航任务的时间来评估局部规划算法的运动效率，这里的给定导航任务是指机器人完成固定起点和终点的定点导航
 
 ### 3.3 计算效率
-我们用局部规划算法的平均计算耗时来评估算法的计算效率
+我们用导航过程中局部规划算法的平均计算耗时来评估算法的计算效率
+
+### 3.4 平滑性
+我们用导航过程中平均线加速度来评估速度平滑性
 
 上述指标具体的计算公式请见move_base_benchmark/doc目录下的pdf文档。此外，在doc目录下还提供了一个cpp文件metrics.cpp用于计算上述指标。您需要创建一个文件夹，我们暂且将文件夹命名为metric_evaluation
 ```
@@ -101,7 +104,7 @@ $ ./metric_evaluation ../log.txt
 ```
 即可在终端看到指标计算结果
 
-<font color="#dd0000">为了对不同局部规划算法进行公平的对比，每次比较时需要指定相同的起点和终点</font><br />
+<table><tr><td bgcolor=yellow>为了对不同局部规划算法进行公平的对比，每次比较时需要指定相同的起点和终点</td></tr></table>
 
 起点可在move_base_benchmark.launch中设置
 
@@ -117,4 +120,4 @@ $ ./metric_evaluation ../log.txt
 <arg name="goal_pose_a" default="-3.139"/>
 ```
 
-<font color="#dd0000">在您的作业报告中，需要给出每次对比测试的起点和终点配置</font><br />
+<table><tr><td bgcolor=yellow>在您的作业报告中，需要给出每次对比测试的起点和终点配置</td></tr></table>
