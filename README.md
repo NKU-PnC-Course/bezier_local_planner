@@ -1,5 +1,11 @@
 # bezier_local_planner
 
+## 目录
+
+* [安装依赖](#1-安装依赖)
+* [使用benchmark](#2-使用benchmark)
+* [定量评估](#3-定量评估)
+
 ## 1. 安装依赖
 我们假设您已经创建了名为catkin_ws的工作空间并完成了初始化。如果您的ROS版本是melodic，可直接用二进制安装navigation包
 ```
@@ -57,7 +63,7 @@ P.S. 修改launch文件以及相关的yaml配置文件后无需编译，运行�
 $ source ~/catkin_ws/devel/setup.bash
 $ roslaunch move_base_benchmark move_base_benchmark.launch
 ```
-在弹出的RViz可视化界面里，点击工具栏的2D Nav Goal并在地图中设置终点，即可运行导航程序。
+在弹出的RViz可视化界面里，点击工具栏的2D Nav Goal并在地图中设置终点，即可运行导航程序
 
 您也可以运行move_base_benchmark/launch目录下的simple_navigation_goals.launch来指定导航的终点
 ```
@@ -94,6 +100,7 @@ mkdir metric_evaluation
 ```
 $ cd metric_evaluation
 $ mkdir build
+$ cd build/
 $ cmake ..
 $ make -j4
 ```
@@ -104,7 +111,7 @@ $ ./metric_evaluation ../log.txt
 ```
 即可在终端看到指标计算结果
 
-<table><tr><td bgcolor=yellow>为了对不同局部规划算法进行公平的对比，每次比较时需要指定相同的起点和终点</td></tr></table>
+**为了对不同局部规划算法进行公平的对比，每组对比测试需要指定相同的起点和终点**
 
 起点可在move_base_benchmark.launch中设置
 
@@ -120,4 +127,4 @@ $ ./metric_evaluation ../log.txt
 <arg name="goal_pose_a" default="-3.139"/>
 ```
 
-<table><tr><td bgcolor=yellow>在您的作业报告中，需要给出每次对比测试的起点和终点配置</td></tr></table>
+**在您的作业报告中，需要给出每组对比测试的起点和终点配置**
