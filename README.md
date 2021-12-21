@@ -31,7 +31,7 @@ $ git clone https://github.com/NKU-MobFly-Robotics/bezier_local_planner.git
 $ cd ~/catkin_ws/
 $ catkin_make -DCMAKE_BUILD_TYPE=Release
 ```
-P.S. 在BezierLocalPlanner类里面，我们已经帮大家定义了一些路径publisher和相应的publish函数，为了后续的可视化，需要您在代码实现的时候调用相应的函数发布路径话题
+P.S. 在BezierLocalPlanner类里面，我们已经帮您定义了一些用于可视化路径的publisher和相应的publish函数，需要您在代码实现的时候调用相应的函数发布路径话题
 
 ## 2. 使用benchmark
 本次作业我们采用的机器人仿真模型依旧是Pioneer 3-DX，在上一次DWA的作业中我们已经安装过，这里就不再赘述。下面请先下载benchmark源码到本地并编译
